@@ -1,7 +1,7 @@
 <template>
   <div class="results">
     <div class="results__title">
-      <h3 class="title">Your speed</h3>
+      <h3 class="title">Your speed:</h3>
       <p class="result">{{ rightAnswers }} WPH</p>
     </div>
     <p class="paragraph">
@@ -48,12 +48,12 @@ export default {
 }
 
 .right-answer {
-  color: green;
+  color: #20c997;
   margin-left: 5px;
 }
 
 .wrong-answer {
-  color: red;
+  color: #fa5252;
   margin-left: 5px;
 }
 </style>

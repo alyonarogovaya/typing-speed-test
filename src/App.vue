@@ -18,14 +18,16 @@
       type="text"
       class="input"
       @keydown.space="checkWord"
-      @focus="startTimer"
+      @focus.once="startTimer"
       v-model.trim="inputWord"
       :disabled="seconds === 0"
     />
     <div class="timer">
       <div class="timer__item">{{ seconds }} s</div>
     </div>
-    <button class="reload" @click="reloadPage"></button>
+    <button class="reload" @click="reloadPage">
+      <MdRefreshIcon></MdRefreshIcon>
+    </button>
   </div>
   <TestResults
     v-if="seconds === 0"
@@ -37,10 +39,12 @@
 <script>
 import BaseSpinner from './components/BaseSpinner.vue';
 import TestResults from './components/TestResults.vue';
+import MdRefreshIcon from 'vue-ionicons/dist/md-refresh.vue';
 export default {
   components: {
     BaseSpinner,
     TestResults,
+    MdRefreshIcon,
   },
   data() {
     return {
@@ -136,7 +140,7 @@ export default {
   padding: 0;
 }
 body {
-  background-color: #a5d8ff;
+  background-color: #d0ebff;
   margin-top: 50px;
 }
 
@@ -174,6 +178,10 @@ body {
   background-color: white;
   border: 0.5px solid #000;
   cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .word {
@@ -182,11 +190,11 @@ body {
 }
 
 .wrong {
-  background-color: red;
+  background-color: #fa5252;
 }
 
 .right {
-  background-color: green;
+  background-color: #20c997;
 }
 
 .highlight {
